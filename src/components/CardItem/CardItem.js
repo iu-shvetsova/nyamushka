@@ -43,6 +43,21 @@ const getServingsCountText = servingsCount => {
   }
 };
 
+const getDescription = (status, filling, description) => {
+  switch (status) {
+    case "disabled":
+      return `Печалька, ${filling} закончился`;
+    case "selected":
+      return description;
+    case "default":
+      return (
+        <span>
+          Чего сидишь? Порадуй котэ, <a href="#">купи</a>.
+        </span>
+      );
+  }
+};
+
 const CardItem = ({
   type,
   title,
@@ -52,10 +67,12 @@ const CardItem = ({
   additions,
   weight,
   description,
-  status
+  status,
+  onSelect,
+  className
 }) => {
   return (
-    <div className={b()}>
+    <div className={`${b({ [status]: true })} ${className}`} onClick={onSelect}>
       <div className={b("container")}>
         <div className={b("top-wrapper")}>
           <p className={b("type")}>{type}</p>
@@ -79,18 +96,23 @@ const CardItem = ({
             })}
           </ul>
         </div>
-        <img
-          className={b("image")}
-          src="assets/images/picture@1x.png"
-          width="314"
-          height="272"
-          srcSet="assets/images/picture@2x.png 2x"
-        />
+        <div className={b("image-wrapper")}>
+          <img
+            src="assets/images/picture@1x.png"
+            width="314"
+            height="272"
+            srcSet="assets/images/picture@2x.png 2x"
+            alt="Изображение продукта."
+          />
+        </div>
         <p className={b("weight-wrapper")}>
-          <span className={b("weight-amount")}>{weight.toLocaleString()}</span> кг
+          <span className={b("weight-amount")}>{weight.toLocaleString()}</span>{" "}
+          кг
         </p>
       </div>
-      <p className={b("description")}>{description}</p>
+      <p className={b("description")}>
+        {getDescription(status, filling, description)}
+      </p>
     </div>
   );
 };

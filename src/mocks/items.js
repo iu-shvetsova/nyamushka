@@ -1,5 +1,6 @@
 export const items = [
   {
+    id: 0,
     type: "Сказочное заморское яство",
     title: "Нямушка",
     filling: "с фуа-гра",
@@ -11,6 +12,7 @@ export const items = [
     status: "default"
   },
   {
+    id: 1,
     type: "Сказочное заморское яство",
     title: "Нямушка",
     filling: "с рыбой",
@@ -22,6 +24,7 @@ export const items = [
     status: "selected"
   },
   {
+    id: 2,
     type: "Сказочное заморское яство",
     title: "Нямушка",
     filling: "с курой",
