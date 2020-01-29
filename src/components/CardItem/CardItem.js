@@ -2,6 +2,8 @@ import React from "react";
 import "./CardItem.scss";
 import { withNaming } from "@bem-react/classname";
 import { getMiceCountText, getServingsCountText } from "../../helpers/index";
+import cat1x from "./../../assets/images/picture@1x.png";
+import cat2x from "./../../assets/images/picture@2x.png";
 
 const cn = withNaming({ n: "", e: "__", m: "--", v: "_" });
 const b = cn("card-item");
@@ -93,10 +95,10 @@ class CardItem extends React.Component {
           </div>
           <div className={b("image-wrapper")}>
             <img
-              src="assets/images/picture@1x.png"
+              src={cat1x}
               width="314"
               height="272"
-              srcSet="assets/images/picture@2x.png 2x"
+              srcSet={`${cat2x} 2x`}
               alt="Изображение продукта."
             />
           </div>
