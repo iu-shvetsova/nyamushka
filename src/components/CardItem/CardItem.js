@@ -1,49 +1,12 @@
 import React from "react";
 import "./CardItem.scss";
 import { withNaming } from "@bem-react/classname";
+import { getMiceCountText, getServingsCountText } from "../../helpers/index";
 
 const cn = withNaming({ n: "", e: "__", m: "--", v: "_" });
 const b = cn("card-item");
 
-const getMiceCountText = miceCount => {
-  if (miceCount === 1) {
-    return "мышь";
-  }
-
-  if (miceCount % 100 >= 11 && miceCount % 100 <= 14) {
-    return "мышей";
-  }
-
-  switch (miceCount % 10) {
-    case 1:
-      return "мышь";
-    case 2:
-    case 3:
-    case 4:
-      return "мыши";
-    default:
-      return "мышей";
-  }
-};
-
-const getServingsCountText = servingsCount => {
-  if (servingsCount % 100 >= 11 && servingsCount % 100 <= 14) {
-    return "порций";
-  }
-
-  switch (servingsCount % 10) {
-    case 1:
-      return "порция";
-    case 2:
-    case 3:
-    case 4:
-      return "порции";
-    default:
-      return "порций";
-  }
-};
-
-const getDescription = (status, filling, description) => {
+export const getDescription = (status, filling, description) => {
   switch (status) {
     case "disabled":
       return `Печалька, ${filling} закончился`;
@@ -52,7 +15,10 @@ const getDescription = (status, filling, description) => {
     case "default":
       return (
         <span>
-          Чего сидишь? Порадуй котэ, <a href="#">купи</a>.
+          Чего сидишь? Порадуй котэ,{" "}
+          <span className={b("link")}>
+            <a href="#">купи</a>.
+          </span>
         </span>
       );
   }

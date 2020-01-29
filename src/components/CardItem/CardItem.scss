@@ -149,6 +149,25 @@
     text-align: center;
     color: #ffffff;
   }
+
+  &__link {
+    color: #1698d9;
+  }
+
+  &__link a {
+    color: inherit;
+    text-decoration-style: dashed;
+
+    transition: opacity 0.25s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
 }
 
 .card-item--selected {
